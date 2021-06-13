@@ -6,7 +6,11 @@
 #include <time.h>
 #include <string.h>
 
-main(int argc, char *argv[])
+// Declaramos antes las funciones para que no aparezca ningun tipo de warning
+int wait();
+int error();
+
+void main(int argc, char *argv[])
 {
     int childid;
     int t;
@@ -54,7 +58,7 @@ main(int argc, char *argv[])
     }
     else
     {
-        printf("Introduce un primer caracter valido, S para secuencial o C para concurrente\n"); // Se notifica al usuario en caso de no seleccionar un modo.
+        printf("\nIntroduce un primer caracter valido, S para secuencial o C para concurrente\n"); // Se notifica al usuario en caso de no seleccionar un modo.
         exit(0);
     }
 
