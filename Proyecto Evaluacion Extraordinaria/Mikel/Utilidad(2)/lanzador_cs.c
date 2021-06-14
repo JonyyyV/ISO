@@ -17,7 +17,7 @@ void main(int argc, char *argv[])
 
     if(argc < 3){ //Controlamos que se haya introducido al menos un comando.
         printf("\nIntroduce los comandos a continuacion del modo\n");
-        exit(0);
+        exit(2);
     }
 
     if (strcmp(argv[1], "C") == 0) // En caso de introducir C como primer parametro, entraremos al modo concurrente.
@@ -59,7 +59,7 @@ void main(int argc, char *argv[])
     else
     {
         printf("\nIntroduce un primer caracter valido, S para secuencial o C para concurrente\n"); // Se notifica al usuario en caso de no seleccionar un modo.
-        exit(0);
+        exit(2);
     }
 
     while (wait(NULL) != -1); // El programa principal, lanzador_cs, esperara a que terminen todos los procesos antes de contabilizar el tiempo,
