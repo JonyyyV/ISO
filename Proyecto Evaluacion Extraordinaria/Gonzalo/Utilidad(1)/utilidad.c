@@ -34,10 +34,10 @@ void main(int argc, char *argv[])
 
 
         if((dst_f = open(argv[2], O_WRONLY | O_APPEND | O_CREAT, 0644)) == -1){ //Abrimos o en su defecto creamos el archivo en el que queremos escribir los datos
-            printf("Error al cerrar el fichero de origen\n");
+            printf("Error al crear o abrir el fichero de origen\n");
             exit(2);
         }
-        if (lseek(org_f, dig, SEEK_SET) == dig - 1) //Posicionamos el puntero en la posicion indicada por parametros, en caso de que no tenga tal posicion, se sale del if.
+        if (lseek(org_f, dig, SEEK_SET) == dig) //Posicionamos el puntero en la posicion indicada por parametros, en caso de que no tenga tal posicion, se sale del if.
         {
             for (int i = dig; i < size; i++) //Realizamos un ciclo por cada byte que tengamos que reescribir.
             {
@@ -59,6 +59,8 @@ void main(int argc, char *argv[])
             }
         }
         chmod(argv[2], 0555); //Modificamos los permisos de forma que se ajusten a los requisitos de la expecificación.
+        close(org_f);
+        close(dst_f);
     }
     else // En caso de introducir un valor no númerico, se notificará al usuario y se terminará la ejecución.
     {
